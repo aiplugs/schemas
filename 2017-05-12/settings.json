@@ -1,0 +1,42 @@
+{ 
+	"$schema":"http://schemas.aiplugs.com/flexible-cms/2017-05-12/root.json#",
+	"id": "http://schemas.aiplugs.com/flexible-cms/2017-05-12/settings.json#",
+	"title": "Settings",
+	"description": "A Flexible CMS template settings",
+	"type": "object",
+	"properties": {
+		"title": {
+			"type":"string",
+			"description": "CMS Title"
+		},
+		"collections": {
+			"type":"array",
+			"description": "Collection list",
+			"items": {
+				"type": "object",
+				"description": "A collection settings, collection is list of your data",
+				"properties": {
+					"name": {
+						"type": "string",
+						"description": "collection name"
+					},
+					"displayName": {
+						"type": "string",
+						"description": "collection name for display. if this is null, name property is used."
+					},
+					"schema": {
+						"type":"string",
+						"input": {
+							"type": "code",
+							"code.lang": "json"
+						},
+						"default": "{\n  \"$schema\": \"http://schemas.aiplugs.com/flexible-cms/2017-05-12/root.json#\",\n  \"properties\": {\n  }\n}"
+					}
+				},
+				"required":[
+					"name", "schema"
+				]
+			}
+		}
+	}
+}
