@@ -9,10 +9,7 @@ var today = (function(){
 }());
 
 const load = (path) => JSON.parse(fs.readFileSync(path));
-const save = (path, body) => fs.writeFileSync(`./dist/${path}`, JSON.stringify(body, null, 4));
-
-const CMS_ROOT = 'cms/root.json';
-const CMS_SETTINGS = 'cms/settings.json';
+const save = (path, body) => fs.writeFileSync(path, JSON.stringify(body, null, 4));
 
 if (!fs.existsSync('./dist'))
   fs.mkdirSync('./dist');
@@ -20,16 +17,19 @@ if (!fs.existsSync('./dist'))
 if (!fs.existsSync('./dist/cms'))
   fs.mkdirSync('./dist/cms');
 
-(function padding_today_to_root_json(path){
-  const schema = load(path);
-  schema.id = `http://schemas.aiplugs.com/cms/${today}/root.json#`;
-  save(path, schema);
-}(CMS_ROOT));
+if (!fs.existsSync(`./dist/cms/${today}`))
+  fs.mkdirSync(`./dist/cms/${today}`);
 
-(function set_today_root_json_to_settings_json(path){
-  const schema = load(path);
+(function padding_today_to_root_json(){
+  const schema = load('cms/root.json');
+  schema.id = `http://schemas.aiplugs.com/cms/${today}/root.json#`;
+  save(`dist/cms/${today}/root.json`, schema);
+}());
+
+(function set_today_root_json_to_settings_json(){
+  const schema = load('cms/settings.json');
   schema['$schema'] = `http://schemas.aiplugs.com/cms/${today}/root.json#`;
   schema.id = `http://schemas.aiplugs.com/cms/${today}/settings.json#`;  
-  save(path, schema);
-}(CMS_SETTINGS));
+  save(`dist/cms/${today}/settings.json`, schema);
+}());
 
