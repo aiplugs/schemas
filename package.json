@@ -1,0 +1,23 @@
+{
+  "name": "schemas",
+  "version": "1.0.0",
+  "description": "aiplugs cms json schemas",
+  "main": "publish.js",
+  "scripts": {
+    "publish": "node publish.js && cp ./html/* ./dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aiplugs/schemas.git"
+  },
+  "keywords": [
+    "json",
+    "schema"
+  ],
+  "author": "iwate",
+  "license": "GPL-2.0",
+  "bugs": {
+    "url": "https://github.com/aiplugs/schemas/issues"
+  },
+  "homepage": "https://github.com/aiplugs/schemas#readme"
+}

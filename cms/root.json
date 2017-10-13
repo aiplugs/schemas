@@ -1,6 +1,6 @@
 {
     "$schema": "http://json-schema.org/draft-04/schema#",
-    "id": "http://schemas.aiplugs.com/flexible-cms/2017-05-12/root.json#",
+    "id": "http://schemas.aiplugs.com/cms/{{today}}/root.json#",
     "description": "Core schema meta-schema",
     "definitions": {
         "schemaArray": {

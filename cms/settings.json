@@ -1,6 +1,6 @@
 { 
-	"$schema":"http://schemas.aiplugs.com/flexible-cms/2017-05-12/root.json#",
-	"id": "http://schemas.aiplugs.com/flexible-cms/2017-05-12/settings.json#",
+	"$schema":"http://schemas.aiplugs.com/cms/2017-10-09/root.json#",
+	"id": "http://schemas.aiplugs.com/cms/2017-10-09/settings.json#",
 	"title": "Settings",
 	"description": "A Flexible CMS template settings",
 	"type": "object",
@@ -30,7 +30,7 @@
 							"type": "code",
 							"code.lang": "json"
 						},
-						"default": "{\n  \"$schema\": \"http://schemas.iwate.me/flexible-cms/2017-05-12/root.json#\",\n  \"properties\": {\n  }\n}"
+						"default": "{\n  \"$schema\": \"http://schemas.iwate.me/flexible-cms/2017-10-09/root.json#\",\n  \"properties\": {\n  }\n}"
 					}
 				},
 				"required":[
