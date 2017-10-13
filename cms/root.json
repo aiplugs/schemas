@@ -149,13 +149,38 @@
                 "type":  { 
                     "$ref": "#/definitions/inputTypes",
                     "default": "text"
-                 },
-                 "code": {
-                     "type": "object",
-                     "default": { 
-                         "language": "html"
-                     }
-                 }
+                },
+                "code": {
+                    "type": "object",
+                    "default": { 
+                        "language": "html"
+                    }
+                },
+                "autocomplete": {
+                    "anyOf": [
+                        {"type": "string"},
+                        {
+                            "type":"object",
+                            "properties": {
+                                "url": {
+                                    "type": "string"
+                                },
+                                "paramKey": {
+                                    "type": "string"
+                                },
+                                "method": {
+                                    "enum": ["get", "post"]
+                                },
+                                "queryParams": {
+                                    "type": "object"
+                                },
+                                "customHeaders": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    ]
+                }
             },
             "default": {}
         },
