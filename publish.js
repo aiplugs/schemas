@@ -28,8 +28,12 @@ if (!fs.existsSync(`./dist/cms/${today}`))
 
 (function set_today_root_json_to_settings_json(){
   const schema = load('cms/settings.json');
-  schema['$schema'] = `http://schemas.aiplugs.com/cms/${today}/root.json#`;
+  const schemaUri = `http://schemas.aiplugs.com/cms/${today}/root.json#`;
+  schema['$schema'] = schemaUri;
   schema.id = `http://schemas.aiplugs.com/cms/${today}/settings.json#`;  
+  schema.properties.collections.items.properties.schema.default = JSON.stringify({
+    "$schema": schemaUri
+  });
   save(`dist/cms/${today}/settings.json`, schema);
 }());
 
