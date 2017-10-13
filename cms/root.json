@@ -25,10 +25,7 @@
             "uniqueItems": true
         },
         "inputTypes": {
-            "enum": [ "text", "textarea", "wysiwyg", "code", "datetime", "date" ]
-        },
-        "inputCodeTypes": {
-            "enum": [ "bat","c","coffeescript","cpp","csharp","css","dockerfile","fsharp","go","handlebars","html","ini","jade","java","javascript","json","less","lua","markdown","objective-c","php","plaintext","postiats","powershell","python","r","razor","ruby","scss","sql","swift","typescript","vb","xml","yaml" ]
+            "enum": [ "text", "textarea", "wysiwyg", "code", "datetime", "date", "checkbox", "radio" ]
         }
     },
     "type": "object",
@@ -143,6 +140,9 @@
                 }
             ]
         },
+        "enumLabels": {
+            "type":"object"
+        },
         "input": {
             "type": "object",
             "properties": {
@@ -150,9 +150,11 @@
                     "$ref": "#/definitions/inputTypes",
                     "default": "text"
                  },
-                 "code.lang": {
-                    "$ref": "#/definitions/inputCodeTypes",
-                    "default": "html"
+                 "code": {
+                     "type": "object",
+                     "default": { 
+                         "language": "html"
+                     }
                  }
             },
             "default": {}
