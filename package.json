@@ -15,7 +15,7 @@
     "schema"
   ],
   "author": "iwate",
-  "license": "GPL-2.0",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/aiplugs/schemas/issues"
   },
