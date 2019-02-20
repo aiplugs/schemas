@@ -1,5 +1,5 @@
 {
-    "$schema": "http://json-schema.org/draft-04/schema#",
+    "$schema": "http://json-schema.org/draft-06/schema#",
     "id": "http://schemas.aiplugs.com/cms/{{today}}/root.json#",
     "description": "Core schema meta-schema",
     "definitions": {
@@ -25,7 +25,7 @@
             "uniqueItems": true
         },
         "inputTypes": {
-            "enum": [ "text", "textarea", "wysiwyg", "code", "datetime", "date", "email", "checkbox", "autocomplete", "tag" ]
+            "enum": [ "text", "textarea", "wysiwyg", "code", "datetime-local", "date", "email", "checkbox", "radio", "select", "tag" ]
         }
     },
     "type": "object",
@@ -47,22 +47,19 @@
         "default": {},
         "multipleOf": {
             "type": "number",
-            "minimum": 0,
-            "exclusiveMinimum": true
+            "exclusiveMinimum": 0
         },
         "maximum": {
             "type": "number"
         },
         "exclusiveMaximum": {
-            "type": "boolean",
-            "default": false
+            "type": "number"
         },
         "minimum": {
             "type": "number"
         },
         "exclusiveMinimum": {
-            "type": "boolean",
-            "default": false
+            "type": "number"
         },
         "maxLength": { "$ref": "#/definitions/positiveInteger" },
         "minLength": { "$ref": "#/definitions/positiveIntegerDefault0" },
@@ -87,6 +84,10 @@
         "maxItems": { "$ref": "#/definitions/positiveInteger" },
         "minItems": { "$ref": "#/definitions/positiveIntegerDefault0" },
         "uniqueItems": {
+            "type": "boolean",
+            "default": false
+        },
+        "unique": {
             "type": "boolean",
             "default": false
         },
@@ -150,36 +151,31 @@
                     "$ref": "#/definitions/inputTypes",
                     "default": "text"
                 },
-                "code": {
-                    "type": "object",
-                    "default": { 
-                        "language": "html"
-                    }
+                "monaco": {
+                    "type": "object"
+                },
+                "tinymce": {
+                    "type": "object"
                 },
                 "autocomplete": {
-                    "anyOf": [
-                        {"type": "string"},
-                        {
-                            "type":"object",
-                            "properties": {
-                                "url": {
-                                    "type": "string"
-                                },
-                                "paramKey": {
-                                    "type": "string"
-                                },
-                                "method": {
-                                    "enum": ["get", "post"]
-                                },
-                                "queryParams": {
-                                    "type": "object"
-                                },
-                                "customHeaders": {
-                                    "type": "object"
-                                }
-                            }
+                    "type":"object",
+                    "properties": {
+                        "url": {
+                            "type": "string"
+                        },
+                        "labelKey": {
+                            "type": "string",
+                            "default": "label"
+                        },
+                        "valueKey": {
+                            "type": "string",
+                            "default": "value"
+                        },
+                        "customHeaders": {
+                            "type": "object"
                         }
-                    ]
+                    },
+                    "required": ["url"]
                 }
             },
             "default": {}
